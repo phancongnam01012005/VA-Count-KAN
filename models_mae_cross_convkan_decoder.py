@@ -204,7 +204,7 @@ class SupervisedMAE(nn.Module):
                         self.decode_head3(x), size=x.shape[-1]*2, mode='bilinear', align_corners=False)
        
         # Ép density map không âm nhưng mềm hơn ReLU
-        x = F.softplus(x, beta=1, threshold=20)
+        # x = F.softplus(x, beta=1, threshold=20)
 
         # Chặn NaN/Inf nếu output bị vỡ
         x = torch.nan_to_num(x, nan=0.0, posinf=1e4, neginf=0.0)
