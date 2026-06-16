@@ -207,7 +207,7 @@ class SupervisedMAE(nn.Module):
         # x = F.softplus(x, beta=1, threshold=20)
 
         # Chặn NaN/Inf nếu output bị vỡ
-        x = torch.nan_to_num(x, nan=0.0, posinf=1e4, neginf=0.0)
+        # x = torch.nan_to_num(x, nan=0.0, posinf=1e4, neginf=0.0)
 
         x = x.squeeze(-3)
 
