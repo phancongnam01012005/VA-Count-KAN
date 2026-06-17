@@ -85,25 +85,25 @@ class SupervisedMAE(nn.Module):
         self.decode_head0 = nn.Sequential(
             FastKANConv2DLayer(decoder_embed_dim, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
-            nn.ReLU(inplace=True)
+            # nn.ReLU(inplace=True)
         )
 
         self.decode_head1 = nn.Sequential(
             FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
-            nn.ReLU(inplace=True)
+            # nn.ReLU(inplace=True)
         )
 
         self.decode_head2 = nn.Sequential(
             FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
-            nn.ReLU(inplace=True)
+            # nn.ReLU(inplace=True)
         )
 
         self.decode_head3 = nn.Sequential(
             FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
-            nn.ReLU(inplace=True),
+            # nn.ReLU(inplace=True),
             FastKANConv2DLayer(256, 1, kernel_size=1, stride=1, padding=0)
         )  
     
