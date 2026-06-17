@@ -83,25 +83,25 @@ class SupervisedMAE(nn.Module):
         # Density map regresssion module
 
         self.decode_head0 = nn.Sequential(
-            FastKANConv2DLayer(decoder_embed_dim, 256, 3, 1, 1),
+            FastKANConv2DLayer(decoder_embed_dim, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
             nn.ReLU(inplace=True)
         )
 
         self.decode_head1 = nn.Sequential(
-            FastKANConv2DLayer(256, 256, 3, 1, 1),
+            FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
             nn.ReLU(inplace=True)
         )
 
         self.decode_head2 = nn.Sequential(
-            FastKANConv2DLayer(256, 256, 3, 1, 1),
+            FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
             nn.ReLU(inplace=True)
         )
 
         self.decode_head3 = nn.Sequential(
-            FastKANConv2DLayer(256, 256, 3, 1, 1),
+            FastKANConv2DLayer(256, 256, kernel_size=3, stride=1, padding=1),
             nn.GroupNorm(8, 256),
             nn.ReLU(inplace=True),
             FastKANConv2DLayer(256, 1, kernel_size=1, stride=1, padding=0)
@@ -208,6 +208,8 @@ class SupervisedMAE(nn.Module):
 
         # Chặn NaN/Inf nếu output bị vỡ
         # x = torch.nan_to_num(x, nan=0.0, posinf=1e4, neginf=0.0)
+
+        # x = F.relu(x)
 
         x = x.squeeze(-3)
 
